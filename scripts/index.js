@@ -1,19 +1,19 @@
 const cardTemplate = document.querySelector("#card-template").content;
 const placesList = document.querySelector(".places__list");
-initialCards.forEach(element => {
+
+function createCard(element) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__title").textContent = element.name;
-  cardElement.querySelector(".card__image").src = element.link;
-  cardElement.querySelector(".card__image").alt = element.name;
-  cardElement
-    .querySelector(".card__delete-button")
-    .addEventListener("click", evt => {
-      evt.target.parentElement.remove();
-    });
-  placesList.append(cardElement);
-});
-// @todo: Темплейт карточки V
-// @todo: DOM узлы V
-// @todo: Функция создания карточки V
-// @todo: Функция удаления карточки V
-// @todo: Вывести карточки на страницу V
+  const cardTitle = cardElement.querySelector(".card__title");
+  const cardImage = cardElement.querySelector(".card__image");
+  cardTitle.textContent = element.name;
+  cardImage.src = element.link;
+  cardImage.alt = element.name;
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", () => {
+    const placesItem = deleteButton.closest('.places__item');
+    placesItem.remove();});
+  placesList.append(cardElement)
+  return cardElement;
+};
+initialCards.forEach(createCard);
+
