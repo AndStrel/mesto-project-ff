@@ -10,12 +10,12 @@ function createCard(element, handleDelete) {
   cardImage.alt = element.name;
   const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", handleDelete);
-    deleteButton.addEventListener("click", () => {
+  function handleDelete() {
     const placesItem = deleteButton.closest('.places__item');
-    placesItem.remove();});
+    placesItem.remove();
+  };
     return cardElement;
-}
-
+  };
 initialCards.forEach((item) => {
   placesList.append(createCard(item));
 });
