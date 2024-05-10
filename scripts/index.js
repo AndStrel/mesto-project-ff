@@ -9,11 +9,11 @@ function createCard(element, handleDelete) {
   cardImage.src = element.link;
   cardImage.alt = element.name;
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", handleDelete);
-    deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", () => {
     const placesItem = deleteButton.closest('.places__item');
-    placesItem.remove();});
-    return cardElement;
+    placesItem.remove();
+  });
+  return cardElement;
 }
 
 initialCards.forEach((item) => {
