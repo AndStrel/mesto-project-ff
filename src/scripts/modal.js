@@ -1,9 +1,3 @@
-//переменные попап
-const popupEdit = document.querySelector(".popup_type_edit");
-const popupNewCard = document.querySelector(".popup_type_new-card");
-const popupEditOpen = document.querySelector(".profile__edit-button");
-const popupNewCardOpen = document.querySelector(".profile__add-button");
-
 //функция открытия попап
 function openPopup(popup) {
   popup.classList.add("popup_is-opened");
@@ -35,11 +29,4 @@ function closeEsc(evt) {
   }
 }
 
-export {
-  popupEdit,
-  popupNewCard,
-  popupEditOpen,
-  popupNewCardOpen,
-  openPopup,
-  closePopup,
-};
+export { openPopup, closePopup };

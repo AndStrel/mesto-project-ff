@@ -1,17 +1,15 @@
 const cardTemplate = document.querySelector("#card-template").content;
-const popupImagePicture = document.querySelector(".popup__image");
-const popupImageCaption = document.querySelector(".popup__caption");
 
 // ФУНКЦИЯ СОЗДАНИЯ КАРТОЧЕК ИЗ ШАБЛОНА
-function createCard(obj, handleDelete, openImage, likeCard) {
+function createCard(cardData, handleDelete, openImage, likeCard) {
   const cardElement = cardTemplate
     .querySelector(".places__item")
     .cloneNode(true);
   const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
-  cardTitle.textContent = obj.name;
-  cardImage.src = obj.link;
-  cardImage.alt = obj.name;
+  cardTitle.textContent = cardData.name;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
   cardElement
     .querySelector(".card__delete-button")
     .addEventListener("click", () => handleDelete(cardElement));
@@ -36,11 +34,4 @@ function likeCard(evt) {
   }
 }
 
-//функция передачи параметров при открытия картинки
-function openImage(name, link) {
-  popupImagePicture.src = link;
-  popupImagePicture.alt = name;
-  popupImageCaption.textContent = name;
-}
-
-export { createCard, handleDelete, likeCard, openImage };
+export { createCard, handleDelete, likeCard };
