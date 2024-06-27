@@ -9,7 +9,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_is-opened");
   document.removeEventListener("click", closeModal);
   document.removeEventListener("keydown", closeEsc);
-}
+  }
 //функция закрытия попап по клику на крестик и в свободную область
 function closeModal(evt) {
   if (

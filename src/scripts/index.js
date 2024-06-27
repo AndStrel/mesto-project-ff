@@ -2,6 +2,7 @@ import "../pages/index.css";
 import { createCard, handleDelete, likeCard } from "./card.js";
 import { initialCards } from "./cards.js";
 import { openPopup, closePopup } from "./modal.js";
+import { clearValidation } from "./validation.js";
 
 const placesList = document.querySelector(".places__list");
 //переменные профиля
@@ -38,6 +39,7 @@ function editInfoProfile() {
 popupEditOpen.addEventListener("click", () => {
   openPopup(popupEdit);
   editInfoProfile();
+  clearValidation();
 });
 
 //функция записи информации профиля после редактирования
@@ -72,3 +74,14 @@ function openImage(name, link) {
 formEdit.addEventListener("submit", recordNewInfoProfile);
 //добавляем карточку при нажатии кнопки сохранения
 formAddCard.addEventListener("submit", handleCreateCard);
+
+
+
+
+
+
+
+
+
+
+
