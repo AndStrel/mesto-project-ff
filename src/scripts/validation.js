@@ -17,14 +17,11 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = "";
 };
 // функция проверки валидности
-const isValid = (formElement, inputElement) => {
-  const regex = /^[a-zA-Zа-яА-Я\s-]+$/;
-  if (regex.test(inputElement.value)) {
-    inputElement.setCustomValidity("");
+const isValid = (formElement, inputElement) => {  
+  if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(inputElement.dataset.errorMessage);
   } else {
-    inputElement.setCustomValidity(
-      "Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
-    );
+    inputElement.setCustomValidity("");
   }
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -61,7 +58,7 @@ const setEventListeners = (formElement) => {
   });
 };
 //функция включения валидации
-const enableValidation = () => {
+export const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll(".popup__form"));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
@@ -70,7 +67,7 @@ const enableValidation = () => {
     setEventListeners(formElement);
   });
 };
-enableValidation();
+
 
 //функция удаляет класс с ошибкой при закрытии попапа // надо переделать в задании имеет другой вид
 export const clearValidation = () => {
