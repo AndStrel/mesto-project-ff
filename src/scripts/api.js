@@ -1,4 +1,3 @@
-// import { createCard, handleDelete, likeCard } from "./card.js";
 const config = {
   baseUrl: "https://nomoreparties.co/v1/wff-cohort-17",
   headers: {
@@ -137,7 +136,7 @@ export const deleteLikeServer = (cardId) => {
     })
     .catch((err) => console.log(err));
 };
-
+// отрисовка загрузки
 export const renderLoading = (isLoading) => {
   if (isLoading) {
     document.querySelectorAll(".popup__button").textContent = "Сохранение...";

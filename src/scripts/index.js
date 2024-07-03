@@ -1,8 +1,7 @@
 import "../pages/index.css";
 import { createCard, handleDelete, likeCard } from "./card.js";
-import { initialCards } from "./cards.js";
 import { openPopup, closePopup } from "./modal.js";
-import { enableValidation, clearValidation } from "./validation.js";
+import { enableValidation, clearValidation, clearValid } from "./validation.js";
 import {
   infoForMe,
   getInitialCards,
@@ -149,8 +148,10 @@ formEdit.addEventListener("submit", recordNewInfoProfile);
 formAddCard.addEventListener("submit", handleCreateCard);
 
 enableValidation({
-  // formList: Array.from(document.querySelectorAll(".popup__form")),
-  // inputList: Array.from(formElement.querySelectorAll(".popup__input")),
-  // buttonElement: formElement.querySelector(".popup__button"),
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_active",
 });
-
