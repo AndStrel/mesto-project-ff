@@ -18,9 +18,6 @@ function closeModal(evt) {
   ) {
     closePopup(document.querySelector(".popup_is-opened"));
   }
-  // else if (evt.target.classList.contains("popup")) {
-  //   closePopup(document.querySelector(".popup_is-opened"));
-  // }
 }
 //функция закрытия попап по нажатию Esc
 function closeEsc(evt) {
