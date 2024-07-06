@@ -36,13 +36,14 @@ export function createCard(
     cardElement
       .querySelector(".card__delete-button")
       .classList.add("card__delete-button_hidden");
-  }
-  // добавляем обработчик клика по кнопке удаления
+  } else {
+      // добавляем обработчик клика по кнопке удаления
   cardElement
-    .querySelector(".card__delete-button")
-    .addEventListener("click", (evt) => {
-      deleteCallback(evt, cardId, cardElement);
-    });
+  .querySelector(".card__delete-button")
+  .addEventListener("click", (evt) => {
+    deleteCallback(evt, cardId, cardElement);
+  });
+  }
   // добавляем обработчик клика по картинке
   cardImage.addEventListener("click", () => {
     openImage(cardTitle.textContent, cardImage.src);

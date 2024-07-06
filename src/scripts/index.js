@@ -138,9 +138,9 @@ function recordNewInfoProfile(evt) {
   renderLoading(true, formEdit);
   // отправка  отредактированной информации профиля на сервер
   editProfile(name, description)
-    .then(() => {
-      profileTitle.textContent = name;
-      profileDescription.textContent = description;
+    .then((res) => {
+      profileTitle.textContent = res.name;
+      profileDescription.textContent = res.about;
     })
     .catch((err) => console.log(err))
     .finally(() => {
