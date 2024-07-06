@@ -39,7 +39,9 @@ const popupNewCardOpen = document.querySelector(".profile__add-button");
 const popupImage = document.querySelector(".popup_type_image");
 const popupImagePicture = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__caption");
-
+//переменные для открытия попапа удаления карточки
+const popupQwestion = document.querySelector(".popup_type_qwestion");
+const popupQwestionButton = document.querySelector(".popup__qwestion-button");
 
 let meID;
 let newCards;
@@ -245,13 +247,19 @@ const deleteCallback = (evt, cardId, card) => {
   const deleteMethod = () => {
     // если событие произошло на контейнере с классом кнопки удаления, то отправляем  запрос на удаление карточки на сервер и потом удаляем карточку
     if (evt.target.classList.contains("card__delete-button")) {
-      deleteCardServer(cardId)
-        .then(() => {
-          card.remove();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      openPopup(popupQwestion);
+      popupQwestionButton.addEventListener("click", () => {
+        deleteCardServer(cardId)
+          .then(() => {
+            card.remove();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            closePopup(popupQwestion);
+          });
+      });
     }
   };
   deleteMethod();
